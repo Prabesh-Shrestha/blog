@@ -1,13 +1,21 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { escapeSvelte, mdsvex } from 'mdsvex';
 import shiki from 'shiki';
+import remarkUnwrapImages from 'remark-unwrap-images';
+import remarkToc from 'remark-toc';
+import rehypeSlug from 'rehype-slug';
 /** @type {import('mdsvex').MdsvexOptions}*/
 const mdsvxOptions = {
 	extensions: ['.md'],
+	layout: {
+		_: './src/mdsvex.svelte'
+	},
+	remarkPlugins: [remarkUnwrapImages, remarkToc],
+	rehypePlugins: [rehypeSlug],
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
-			const highlighter = await shiki.getHighlighter({ theme: 'poimandres' });
+			const highlighter = await shiki.getHighlighter({ theme: 'one-dark-pro' });
 			const html = escapeSvelte(highlighter.codeToHtml(code, { lang }));
 			return `{@html \`${html}\` }`;
 		}

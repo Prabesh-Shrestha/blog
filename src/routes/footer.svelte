@@ -1,19 +1,17 @@
-
 <script lang="ts">
 	import * as config from '$lib/config';
 </script>
 
-
 <footer>
-    <p>{config.title} </p>
+	<p>{config.title}</p>
 </footer>
 
 <style>
-    footer {
-        padding-block: var(--size-7);
-        border-top: 1px solid var(--size-7);
-    }
-    p {
-        color: var(--text-2);
-    }
+	footer {
+		padding-block: var(--size-7);
+		border-top: 1px solid var(--size-7);
+	}
+	p {
+		color: var(--text-2);
+	}
 </style>

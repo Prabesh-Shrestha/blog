@@ -2,13 +2,15 @@ import { error, json } from '@sveltejs/kit';
 import type { PageLoad } from '../$types';
 
 export const load: PageLoad = async ({ params }) => {
-	if (params.slug) {
-		const post = await import(`../../posts/${params.slug}.md`);
+	let slug: string;
+	try {
+		slug = params.slug;
+		const post = await import(`../../posts/${slug}.md`);
 		return {
 			content: post.default,
 			meta: post.metadata
 		};
-	} else {
-		throw error(404, `Could not find ${params.slug}`);
+	} catch (err) {
+		throw error(404, `${err}`);
 	}
 };

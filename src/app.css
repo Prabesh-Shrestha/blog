@@ -133,7 +133,6 @@ li {
 	color: var(--text-1);
 }
 
-
 .prose :is(h2, h3, h4, h5, h6) {
 	margin-top: var(--size-8);
 	margin-bottom: var(--size-3);

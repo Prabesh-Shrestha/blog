@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as config from '$lib/config';
+	import Toggle from './toggle.svelte';
 </script>
 
 <nav>
@@ -16,8 +17,7 @@
 			<a href="/rss.xml" target="_blank">RSS</a>
 		</li>
 	</ul>
-
-	<button>Toggle</button>
+	<Toggle />
 </nav>
 
 <style>
@@ -34,15 +34,14 @@
 		text-decoration: none;
 	}
 	@media (min-width: 768px) {
-        nav{
-            display: flex;
-            justify-content: space-between;
-
-        }
-        .links {
-            display: flex;
-            gap: var(--size-7);
-            margin-block: 0;
-        }
+		nav {
+			display: flex;
+			justify-content: space-between;
+		}
+		.links {
+			display: flex;
+			gap: var(--size-7);
+			margin-block: 0;
+		}
 	}
 </style>

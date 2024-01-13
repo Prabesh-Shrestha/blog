@@ -5,12 +5,16 @@
 	import 'open-props/normalize';
 	import 'open-props/buttons';
 	import '../app.css';
+	import PageTransition from './transition.svelte';
+	export let data;
 </script>
 
 <div class="layout">
 	<Header />
 	<main>
-		<slot />
+		<PageTransition url={data.url}>
+			<slot />
+		</PageTransition>
 	</main>
 	<Footer />
 </div>
